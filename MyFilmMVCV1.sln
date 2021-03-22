@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFilmMVCV1", "MyFilmMVCV1\MyFilmMVCV1.csproj", "{2BE23A04-966E-40E9-9CD0-055CF7CA54B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartAspCartProject", "StartAspCartProject\StartAspCartProject.csproj", "{2BE23A04-966E-40E9-9CD0-055CF7CA54B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

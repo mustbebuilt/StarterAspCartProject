@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MyFilmMVCV1.Models
+namespace StarterAspCartProject.Models
 {
     public class CartItem
     {

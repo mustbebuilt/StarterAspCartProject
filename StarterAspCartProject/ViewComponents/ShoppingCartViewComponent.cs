@@ -3,20 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MyFilmMVCV1.Models;
+using StarterAspCartProject.Models;
 using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 
-namespace MyFilmMVCV1.ViewComponents
+namespace StarterAspCartProject.ViewComponents
 {
     public class ShoppingCartViewComponent : ViewComponent
     {
         const string SessionCart = "_Cart";
-        private readonly IHttpContextAccessor _contextAccessor;
 
-        public ShoppingCartViewComponent(IHttpContextAccessor contextAccessor)
+        public ShoppingCartViewComponent()
         {
-            _contextAccessor = contextAccessor;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()

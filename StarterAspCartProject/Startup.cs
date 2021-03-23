@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyFilmMVCV1.Models;
+using StarterAspCartProject.Models;
 
 namespace MyFilmMVCV1
 {
@@ -27,19 +27,7 @@ namespace MyFilmMVCV1
         {
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options =>
-options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDbContext<AppIdentityDbContext>(options =>
-options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<AppIdentityUser, AppIdentityRole>()
-        .AddEntityFrameworkStores<AppIdentityDbContext>();
-
-            services.ConfigureApplicationCookie(opt =>
-            {
-                opt.LoginPath = "/Security/SignIn";
-                opt.AccessDeniedPath = "/Security/AccessDenied";
-            });
+options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSession(opt =>
             {

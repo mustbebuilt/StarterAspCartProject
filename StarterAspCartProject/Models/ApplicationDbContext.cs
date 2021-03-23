@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyFilmMVCV1.Models
+namespace StarterAspCartProject.Models
 {
     public class ApplicationDbContext: DbContext
     {
@@ -11,6 +11,6 @@ namespace MyFilmMVCV1.Models
             {
             }
 
-        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Film> Films { get; set; }
     }
 }

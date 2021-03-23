@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace MyFilmMVCV1
+namespace starterAspCartProject
 {
     #line hidden
     using System;

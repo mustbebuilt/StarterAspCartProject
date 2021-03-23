@@ -8,15 +8,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using MyFilmMVCV1.Models;
+using StarterAspCartProject.Models;
 
-namespace MyFilmMVCV1.Controllers
+namespace StarterAspCartProject.Controllers
 {
     public class HomeController : Controller
     {
 
-        const string SessionName = "_Name";
-        const string SessionAge = "_Age";
         const string SessionCart = "_Cart";
         private readonly ILogger<HomeController> _logger;
 
@@ -33,44 +31,37 @@ namespace MyFilmMVCV1.Controllers
             return View();
         }
 
-        public IActionResult AllMovies()
+        public IActionResult AllFilms()
         {
-            if (String.IsNullOrEmpty(HttpContext.Session.GetString(SessionName)))
-            {
-                HttpContext.Session.SetString(SessionName, "Jarvik");
-                HttpContext.Session.SetInt32(SessionAge, 24);
-            }
-            List<Movie> model = _context.Movies.ToList();
+            List<Film> model = _context.Films.ToList();
             return View(model);
         }
 
  public IActionResult Search(String SearchString, String certType)
         {
 
-            ViewBag.Name = HttpContext.Session.GetString(SessionName);
-            ViewBag.Age = HttpContext.Session.GetInt32(SessionAge);
 
-            var movies = from m in _context.Movies
+            var films = from m in _context.Films
 
-                        select m;
+                         select m;
 
             if (!string.IsNullOrEmpty(SearchString))
 
             {
 
-                movies = movies.Where(s => s.FilmTitle.Contains(SearchString));
+                films = films.Where(s => s.FilmTitle.Contains(SearchString));
 
             }
 
             if (!string.IsNullOrEmpty(certType))
             {
-                movies = movies.Where(x => x.FilmCertificate == certType);
+                films = films.Where(x => x.FilmCertificate == certType);
             }
 
-            var filmCerts = _context.Movies.Select(m => m.FilmCertificate).Distinct();
+            var filmCerts = _context.Films.Select(m => m.FilmCertificate).Distinct();
 
 
-            List<Movie> model = movies.ToList();
+            List<Film> model = films.ToList();
             ViewData["SearchString"] = SearchString;
             ViewData["FilterFilmCert"] = certType;
             ViewData["filmCerts"] = filmCerts.ToList();
@@ -81,15 +72,15 @@ namespace MyFilmMVCV1.Controllers
 
         // note uses id because of routing in startup.cs
         [HttpGet]
-        public IActionResult MovieDetails(int id)
+        public IActionResult FilmDetails(int id)
         {
             //List<Movie> model = _context.Movies.Find(FilmID);
-            Movie model = _context.Movies.Find(id);
+            Film model = _context.Films.Find(id);
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult MovieDetails(IFormCollection form)
+        public IActionResult FilmDetails(IFormCollection form)
         {
             int FilmID = int.Parse(form["FilmID"]);
             string FilmTitle = form["FilmTitle"].ToString();
@@ -123,7 +114,7 @@ namespace MyFilmMVCV1.Controllers
                 CartList.Add(newOrder);
             }
             HttpContext.Session.SetString(SessionCart, JsonSerializer.Serialize(CartList));
-            return RedirectToAction("MovieDetails");
+            return RedirectToAction("FilmDetails");
         }
 
 

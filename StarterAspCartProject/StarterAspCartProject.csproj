@@ -18,8 +18,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Views\Home\Shared\" />
-    <Folder Include="ViewComponents\" />
-    <Folder Include="Views\Home\Components\ShoppingCart\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\notes\" />
   </ItemGroup>
